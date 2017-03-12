@@ -1,7 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2017, aleksdem
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * * Redistributions of source code must retain the above copyright notice, this
+ *   list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright notice,
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 package net.wikiadmin.huaweimodemreader;
 
@@ -18,7 +38,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 /**
- *
+ * Класс для получения данных из xml по URL.
  * @author aleksdem
  */
 public class HuaweiGetData {
@@ -38,33 +58,25 @@ public class HuaweiGetData {
             NodeList rsrpNodes = doc.getElementsByTagName("rsrp");
             NodeList sinrNodes = doc.getElementsByTagName("sinr");
 
-
-
             for(int i=0; i<rssiNodes.getLength();i++)
             {
                 i1 = rssiNodes.item(i).getTextContent();
-                //System.out.println("Мощность приёма сигнала\n (rssi, -100 и ниже - очень слабо): "+i1);
             }
-
 
             for(int i=0; i<rsrpNodes.getLength();i++)
             {
                 i2 = rsrpNodes.item(i).getTextContent();
-                //System.out.println("среднее значение мощности принятых пилотных сигналов\n (rsrp, -100 и ниже - очень слабо): "+i2);
             }
-
 
             for(int i=0; i<sinrNodes.getLength();i++)
             {
                 i3 = sinrNodes.item(i).getTextContent();
-                //System.out.println("Отношение Сигнал/Шум\n (sinr, чем больше тем лучше): "+i3);
             }
         } catch (Exception ex) {
             Logger.getLogger(HuaweiGetData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    //}
     private Document parseXML(InputStream stream)
     throws Exception
     {
@@ -75,15 +87,12 @@ public class HuaweiGetData {
         {
             objDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
             objDocumentBuilder = objDocumentBuilderFactory.newDocumentBuilder();
-
             doc = objDocumentBuilder.parse(stream);
         }
         catch(IOException | ParserConfigurationException ex)
         {
             throw ex;
         }
-
         return doc;
     }
-
 }
