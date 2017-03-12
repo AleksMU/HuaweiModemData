@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- program configuration -->
+<settings>
+  <ipModem>192.168.8.1</ipModem>
+  <updateSec>2</updateSec>
+</settings>
