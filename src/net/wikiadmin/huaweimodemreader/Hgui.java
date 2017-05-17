@@ -26,6 +26,8 @@
 package net.wikiadmin.huaweimodemreader;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 
 /**
@@ -36,10 +38,15 @@ public class Hgui {
 
     public static String jip;// = "192.168.8.1";
     String updSec;// = "2";
+  
+    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM/yyyy");
+    Date date = new Date();
+    String jdate= sdf.format(date);
+
     String jrssp = "no data";
     String jrscp = "no data";
     String jsinr = "no data";
-    String jvers = "0.01";
+    String jvers = "0.02";
     public static String jrssi;
 
     Hgui() {
@@ -50,58 +57,63 @@ public class Hgui {
             updSec = settings.getSec();
 
 
-        jFrame1 = new JFrame("HW-data, ver "+jvers);
-        jLabel1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jFrameMain = new JFrame("HW-data, ver "+jvers);
+        jLabelAddr = new javax.swing.JLabel();
+        jLabelDate = new javax.swing.JLabel();
+        jLabelUpdateTime = new javax.swing.JLabel();
+        jLabelPow = new javax.swing.JLabel();
+        jLabelSCP = new javax.swing.JLabel();
+        jLabelCIO = new javax.swing.JLabel();
 
-        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jFrameMain.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFrameMain.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Адрес модема: "+jip);
-        jFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
+        jLabelAddr.setText("Адрес модема: "+jip);
+        jFrameMain.getContentPane().add(jLabelAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
-        jLabel11.setText("Частота обновления: "+updSec+" сек.");
-        jFrame1.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 20));
+        jLabelDate.setText("Дата: "+jdate);
+        jFrameMain.getContentPane().add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 200, 20));
+        
+        jLabelUpdateTime.setText("Частота обновления: "+updSec+" сек.");
+        jFrameMain.getContentPane().add(jLabelUpdateTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 20));
 
-        jLabel2.setText("Мощность приёма сигнала (rssi): "+jrssp);
-        jFrame1.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 380, 40));
+        jLabelPow.setText("Мощность приёма сигнала (rssi): "+jrssp);
+        jFrameMain.getContentPane().add(jLabelPow, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 380, 40));
 
-        jLabel3.setText("Уровень пилотного сигнала (rscp):  "+jrscp);
-        jFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 40));
+        jLabelSCP.setText("Уровень пилотного сигнала (rscp):  "+jrscp);
+        jFrameMain.getContentPane().add(jLabelSCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 40));
 
-        jLabel4.setText("Отношение Сигнал/Шум (ecio):  "+jsinr);
-        jFrame1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 380, 40));
+        jLabelCIO.setText("Отношение Сигнал/Шум (ecio):  "+jsinr);
+        jFrameMain.getContentPane().add(jLabelCIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 380, 40));
 
-        jFrame1.pack();
-        jFrame1.setVisible(true);
-        jFrame1.setLocationRelativeTo(null);
+        jFrameMain.pack();
+        jFrameMain.setVisible(true);
+        jFrameMain.setLocationRelativeTo(null);
 
     }
 
     void setRssi(String i){
         jrssp = i;
-        jLabel2.setText("Мощность приёма сигнала (rssi): "+jrssp);
+        jLabelPow.setText("Мощность приёма сигнала (rssi): "+jrssp);
     }
 
     void setRsrp(String i){
         jrscp = i;
-        jLabel3.setText("Cр. мощности принятых пилотных с-в (rsrp): "+jrscp);
+        jLabelSCP.setText("Cр. мощности принятых пилотных сигналов (rsrp): "+jrscp);
     }
 
     void setSinr(String i){
         jsinr = i;
-        jLabel4.setText("Отношение Сигнал/Шум (sinr): "+jsinr);
+        jLabelCIO.setText("Отношение Сигнал/Шум (sinr): "+jsinr);
     }
 
     // Variables declaration
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabelAddr;
+    private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelUpdateTime;
+    private javax.swing.JLabel jLabelPow;
+    private javax.swing.JLabel jLabelSCP;
+    private javax.swing.JLabel jLabelCIO;
+    private javax.swing.JFrame jFrameMain;
     // End of variables declaration
 }

@@ -75,6 +75,8 @@ public class HuaweiGetData {
         } catch (Exception ex) {
             Logger.getLogger(HuaweiGetData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
 
     private Document parseXML(InputStream stream)
