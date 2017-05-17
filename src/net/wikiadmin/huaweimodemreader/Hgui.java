@@ -38,7 +38,7 @@ public class Hgui {
 
     public static String jip;// = "192.168.8.1";
     String updSec;// = "2";
-  
+
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM/yyyy");
     Date date = new Date();
     String jdate= sdf.format(date);
@@ -73,7 +73,7 @@ public class Hgui {
 
         jLabelDate.setText("Дата: "+jdate);
         jFrameMain.getContentPane().add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 200, 20));
-        
+
         jLabelUpdateTime.setText("Частота обновления: "+updSec+" сек.");
         jFrameMain.getContentPane().add(jLabelUpdateTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 20));
 
@@ -99,7 +99,7 @@ public class Hgui {
 
     void setRsrp(String i){
         jrscp = i;
-        jLabelSCP.setText("Cр. мощности принятых пилотных сигналов (rsrp): "+jrscp);
+        jLabelSCP.setText("Cр. мощности пилотных сигналов (rsrp): "+jrscp);
     }
 
     void setSinr(String i){
